@@ -1,0 +1,43 @@
+/* NaijaMarket custom styles (Bootstrap 5 loaded via CDN) */
+:root {
+    --nm-green: #198754;
+    --nm-dark-green: #0f5132;
+    --nm-gold: #ffc107;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #f7f9f7;
+}
+main { flex: 1 0 auto; }
+
+.navbar.bg-success { background: linear-gradient(90deg, var(--nm-dark-green), var(--nm-green)) !important; }
+
+.product-card {
+    transition: transform .15s ease, box-shadow .15s ease;
+    height: 100%;
+}
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.12);
+}
+.product-card .card-img-top {
+    height: 190px;
+    object-fit: cover;
+    background: #eef3ee;
+}
+.naira-price { color: var(--nm-dark-green); font-weight: 700; }
+
+.hero {
+    background: linear-gradient(rgba(15,81,50,.85), rgba(15,81,50,.85)),
+                url('https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?w=1600') center/cover;
+    color: #fff;
+    border-radius: 1rem;
+}
+.badge-status-pending    { background:#ffc107; color:#212529; }
+.badge-status-paid       { background:#198754; }
+.badge-status-shipped    { background:#0d6efd; }
+.badge-status-delivered  { background:#198754; }
+.badge-status-cancelled  { background:#dc3545; }

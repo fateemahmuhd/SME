@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enterprise &amp; System Architecture Module — SAGTECH IT SOLUTION</title>
+<meta name="description" content="Architecture module: log and track ERDs, database schemas, class diagrams, flowcharts and system architecture engagements.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="sag-header"></header>
+
+<main>
+
+  <section class="sag-grid-bg border-b" style="border-color:var(--sag-line)">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+      <p class="sag-eyebrow mb-3"><i class="fa-solid fa-sitemap"></i> Pillar 1</p>
+      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4 max-w-3xl">
+        Enterprise &amp; System Architecture
+      </h1>
+      <p class="sag-muted max-w-3xl">
+        Log every design engagement here — class diagrams, database schemas, ERDs, flowcharts and full platform
+        architecture. Track status, priority, progress and the lead architect, and generate a starter DDL preview for
+        schema work.
+      </p>
+      <div class="flex flex-wrap gap-3 mt-6">
+        <button class="sag-btn sag-btn-primary" type="button" id="btn-new-project"><i class="fa-solid fa-plus"></i> Log New Engagement</button>
+        <a class="sag-btn sag-btn-ghost" href="dashboard.html"><i class="fa-solid fa-chart-pie"></i> Delivery Dashboard</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Module KPIs -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 pt-10" aria-label="Architecture metrics">
+    <div id="arch-kpis" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="sag-loading"><span class="sag-spinner"></span><span>Loading metrics…</span></div>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 pt-8" aria-label="Engagement filters">
+    <div class="sag-panel p-4 sm:p-5">
+      <div class="grid gap-4 md:grid-cols-4 md:items-end">
+        <div>
+          <label class="sag-label" for="arch-search">Search</label>
+          <input class="sag-input" id="arch-search" type="search" placeholder="Project, client or stack…" autocomplete="off">
+        </div>
+        <div>
+          <label class="sag-label" for="arch-status">Status</label>
+          <select class="sag-select" id="arch-status">
+            <option value="">All statuses</option>
+            <option>Discovery</option><option>In Design</option><option>In Review</option>
+            <option>Delivered</option><option>On Hold</option>
+          </select>
+        </div>
+        <div>
+          <label class="sag-label" for="arch-artifact">Artifact type</label>
+          <select class="sag-select" id="arch-artifact">
+            <option value="">All artifacts</option>
+            <option>Class Diagram</option><option>ERD</option><option>Database Schema</option>
+            <option>Flowchart</option><option>System Architecture</option><option>UML Use Case</option>
+            <option>Sequence Diagram</option><option>API Specification</option>
+          </select>
+        </div>
+        <div>
+          <label class="sag-label" for="arch-sort">Sort by</label>
+          <select class="sag-select" id="arch-sort">
+            <option value="due">Due date (soonest)</option>
+            <option value="progress">Progress (highest)</option>
+            <option value="priority">Priority</option>
+            <option value="name">Project name (A–Z)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Engagement table -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 py-8" aria-labelledby="engagements-heading">
+    <div class="sag-card p-5 sm:p-6">
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+        <h2 id="engagements-heading" class="text-xl font-bold m-0">Engagement register</h2>
+        <span class="sag-badge sag-badge-cyan" id="arch-count">—</span>
+      </div>
+      <div class="sag-table-wrap">
+        <table class="sag-table">
+          <caption class="sag-sr-only">Architecture engagements with status, progress and actions</caption>
+          <thead>
+            <tr>
+              <th scope="col">Project</th>
+              <th scope="col">Client</th>
+              <th scope="col">Artifact</th>
+              <th scope="col">Status</th>
+              <th scope="col">Priority</th>
+              <th scope="col">Progress</th>
+              <th scope="col">Due</th>
+              <th scope="col" class="sag-no-print">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="arch-tbody">
+            <tr><td colspan="8">Loading engagements…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== CREATE / EDIT MODAL ===================== -->
+<div class="sag-modal-backdrop" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+  <div class="sag-modal">
+    <div class="flex items-start justify-between gap-4 p-5" style="border-bottom:1px solid var(--sag-line)">
+      <div>
+        <h2 class="text-lg font-bold m-0" id="project-modal-title">Log Architecture Engagement</h2>
+        <p class="sag-muted text-sm m-0">POST / PATCH against the architecture_projects table.</p>
+      </div>
+      <button class="sag-btn sag-btn-ghost" type="button" data-close-modal="project-modal" aria-label="Close dialog">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <form id="project-form" class="p-5" novalidate>
+      <input type="hidden" name="id">
+      <div id="project-form-errors" style="display:none" class="mb-4"></div>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="sm:col-span-2">
+          <label class="sag-label" for="pf-name">Project name *</label>
+          <input class="sag-input" id="pf-name" name="project_name" placeholder="e.g. Inventory Management ERD" required>
+        </div>
+        <div>
+          <label class="sag-label" for="pf-client">Client / organisation *</label>
+          <input class="sag-input" id="pf-client" name="client" placeholder="e.g. BrightPath Academy" required>
+        </div>
+        <div>
+          <label class="sag-label" for="pf-domain">Domain / sector</label>
+          <input class="sag-input" id="pf-domain" name="domain" placeholder="e.g. Education, Fintech, Health">
+        </div>
+        <div>
+          <label class="sag-label" for="pf-artifact">Artifact type *</label>
+          <select class="sag-select" id="pf-artifact" name="artifact_type" required></select>
+        </div>
+        <div>
+          <label class="sag-label" for="pf-stack">Technology stack</label>
+          <input class="sag-input" id="pf-stack" name="tech_stack" placeholder="e.g. MySQL 8, PHP 8, Apache">
+        </div>
+        <div>
+          <label class="sag-label" for="pf-status">Status</label>
+          <select class="sag-select" id="pf-status" name="status"></select>
+        </div>
+        <div>
+          <label class="sag-label" for="pf-priority">Priority</label>
+          <select class="sag-select" id="pf-priority" name="priority"></select>
+        </div>
+        <div>
+          <label class="sag-label" for="pf-progress">Progress (%)</label>
+          <input class="sag-input" id="pf-progress" name="progress" type="number" min="0" max="100" step="1" value="0">
+        </div>
+        <div>
+          <label class="sag-label" for="pf-lead">Lead architect</label>
+          <input class="sag-input" id="pf-lead" name="lead_architect" placeholder="e.g. A. Okonkwo">
+        </div>
+        <div>
+          <label class="sag-label" for="pf-due">Due date</label>
+          <input class="sag-input" id="pf-due" name="due_date" type="date">
+        </div>
+        <div class="sm:col-span-2">
+          <label class="sag-label" for="pf-desc">Design description *</label>
+          <textarea class="sag-textarea" id="pf-desc" name="description" placeholder="Entities/classes involved, layers, integration points, constraints…" required></textarea>
+          <p class="sag-help">Mention entity names — the DDL preview generator reads them for schema artifacts.</p>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap justify-end gap-3 mt-6">
+        <button class="sag-btn sag-btn-ghost" type="button" data-close-modal="project-modal">Cancel</button>
+        <button class="sag-btn sag-btn-primary" type="submit" id="project-submit"><i class="fa-solid fa-floppy-disk"></i> Save Engagement</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ===================== DETAIL MODAL ===================== -->
+<div class="sag-modal-backdrop" id="detail-modal" role="dialog" aria-modal="true" aria-labelledby="detail-modal-title">
+  <div class="sag-modal">
+    <div class="flex items-start justify-between gap-4 p-5" style="border-bottom:1px solid var(--sag-line)">
+      <div>
+        <h2 class="text-lg font-bold m-0" id="detail-modal-title">Engagement Detail</h2>
+        <p class="sag-muted text-sm m-0" id="detail-modal-sub">—</p>
+      </div>
+      <button class="sag-btn sag-btn-ghost" type="button" data-close-modal="detail-modal" aria-label="Close dialog">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="p-5" id="detail-body"></div>
+  </div>
+</div>
+
+<footer id="sag-footer"></footer>
+
+<script src="js/app.js"></script>
+<script src="js/architecture.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+services:
+  web:
+    build:
+      context: ./naijamarket/naijamarket
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    volumes:
+      - ./naijamarket/naijamarket:/var/www/html
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_NAME=naijamarket
+      - DB_USER=root
+      - DB_PASS=naijamarket_dev_pw
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: on-failure
+
+  db:
+    image: mariadb:10.11
+    environment:
+      - MYSQL_ROOT_PASSWORD=naijamarket_dev_pw
+      - MYSQL_DATABASE=naijamarket
+    volumes:
+      - ./naijamarket/naijamarket/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+      - dbdata:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    restart: on-failure
+
+volumes:
+  dbdata:

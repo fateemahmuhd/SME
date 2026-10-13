@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business &amp; Final Year Student Project Proposal Desk — SAGTECH IT SOLUTION</title>
+<meta name="description" content="Submit and track business proposals, academic project proposals, technical specifications and problem statements for IT solution platforms.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="sag-header"></header>
+
+<main>
+
+  <section class="sag-grid-bg border-b" style="border-color:var(--sag-line)">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+      <p class="sag-eyebrow mb-3" style="color:var(--sag-violet)"><i class="fa-solid fa-file-signature"></i> Pillar 3</p>
+      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4 max-w-3xl">
+        Business &amp; Academic Proposal Desk
+      </h1>
+      <p class="sag-muted max-w-3xl">
+        Submit a business proposal, academic project proposal, technical specification or problem statement. The desk
+        tracks each submission through Draft → Submitted → Under Review → Approved, with revision rounds recorded.
+      </p>
+      <div class="flex flex-wrap gap-3 mt-6">
+        <button class="sag-btn sag-btn-primary" type="button" id="btn-new-proposal"><i class="fa-solid fa-plus"></i> Submit a Proposal</button>
+        <a class="sag-btn sag-btn-ghost" href="#proposal-tracker"><i class="fa-solid fa-magnifying-glass"></i> Track a Proposal</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- KPIs -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 pt-10" aria-label="Proposal metrics">
+    <div id="prop-kpis" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="sag-loading"><span class="sag-spinner"></span><span>Loading metrics…</span></div>
+    </div>
+  </section>
+
+  <!-- Proposal type guide -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 pt-8" aria-labelledby="types-heading">
+    <div class="sag-card p-5 sm:p-6">
+      <h2 id="types-heading" class="text-xl font-bold mb-1">What we draft</h2>
+      <p class="sag-muted text-sm mb-5">Choose the document type that matches your audience.</p>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <article class="sag-panel p-4">
+          <span class="sag-icon-badge mb-3" style="background:rgba(167,139,250,.15);color:var(--sag-violet)"><i class="fa-solid fa-chart-line"></i></span>
+          <h3 class="font-semibold text-sm mb-1">Business Proposal</h3>
+          <p class="text-xs sag-muted m-0">Investor or procurement facing: market need, solution, costing, ROI and risk.</p>
+        </article>
+        <article class="sag-panel p-4">
+          <span class="sag-icon-badge mb-3" style="background:rgba(167,139,250,.15);color:var(--sag-violet)"><i class="fa-solid fa-graduation-cap"></i></span>
+          <h3 class="font-semibold text-sm mb-1">Academic Proposal</h3>
+          <p class="text-xs sag-muted m-0">UG/MSc/PhD: literature review, methodology, objectives and scope defence.</p>
+        </article>
+        <article class="sag-panel p-4">
+          <span class="sag-icon-badge mb-3" style="background:rgba(167,139,250,.15);color:var(--sag-violet)"><i class="fa-solid fa-clipboard-list"></i></span>
+          <h3 class="font-semibold text-sm mb-1">Technical Specification</h3>
+          <p class="text-xs sag-muted m-0">SRS-style: functional and non-functional requirements with acceptance criteria.</p>
+        </article>
+        <article class="sag-panel p-4">
+          <span class="sag-icon-badge mb-3" style="background:rgba(167,139,250,.15);color:var(--sag-violet)"><i class="fa-solid fa-triangle-exclamation"></i></span>
+          <h3 class="font-semibold text-sm mb-1">Problem Statement</h3>
+          <p class="text-xs sag-muted m-0">A crisp, evidence-based articulation of the gap before funding is sought.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tracker -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 py-8" id="proposal-tracker" aria-labelledby="tracker-heading">
+    <div class="sag-card p-5 sm:p-6">
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+        <div>
+          <h2 id="tracker-heading" class="text-xl font-bold m-0">Proposal tracker</h2>
+          <p class="sag-muted text-sm m-0">Filter by type or status; open a row for the full submission.</p>
+        </div>
+        <span class="sag-badge sag-badge-violet" id="prop-count">—</span>
+      </div>
+
+      <div class="grid gap-3 sm:grid-cols-3 mb-5">
+        <div>
+          <label class="sag-label" for="prop-search">Search</label>
+          <input class="sag-input" id="prop-search" type="search" placeholder="Title, author or organisation…" autocomplete="off">
+        </div>
+        <div>
+          <label class="sag-label" for="prop-type-filter">Document type</label>
+          <select class="sag-select" id="prop-type-filter">
+            <option value="">All types</option>
+            <option>Business Proposal</option><option>Academic Proposal</option>
+            <option>Technical Specification</option><option>Problem Statement</option>
+          </select>
+        </div>
+        <div>
+          <label class="sag-label" for="prop-status-filter">Status</label>
+          <select class="sag-select" id="prop-status-filter">
+            <option value="">All statuses</option>
+            <option>Draft</option><option>Submitted</option><option>Under Review</option>
+            <option>Revisions Requested</option><option>Approved</option><option>Rejected</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="sag-table-wrap">
+        <table class="sag-table">
+          <caption class="sag-sr-only">Submitted proposals with type, status, budget and workflow actions</caption>
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Type</th>
+              <th scope="col">Submitted by</th>
+              <th scope="col">Budget</th>
+              <th scope="col">Deadline</th>
+              <th scope="col">Status</th>
+              <th scope="col" class="sag-no-print">Workflow</th>
+            </tr>
+          </thead>
+          <tbody id="prop-tbody">
+            <tr><td colspan="7">Loading proposals…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==================== SUBMIT / EDIT PROPOSAL MODAL ==================== -->
+<div class="sag-modal-backdrop" id="proposal-modal" role="dialog" aria-modal="true" aria-labelledby="proposal-modal-title">
+  <div class="sag-modal">
+    <div class="flex items-start justify-between gap-4 p-5" style="border-bottom:1px solid var(--sag-line)">
+      <div>
+        <h2 class="text-lg font-bold m-0" id="proposal-modal-title">Submit a Proposal</h2>
+        <p class="sag-muted text-sm m-0">INSERT / UPDATE against the proposals table.</p>
+      </div>
+      <button class="sag-btn sag-btn-ghost" type="button" data-close-modal="proposal-modal" aria-label="Close dialog">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <form id="proposal-form" class="p-5" novalidate>
+      <input type="hidden" name="id">
+      <div id="proposal-form-errors" style="display:none" class="mb-4"></div>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="sm:col-span-2">
+          <label class="sag-label" for="prf-title">Proposal title *</label>
+          <input class="sag-input" id="prf-title" name="title" required placeholder="e.g. Campus Attendance Platform — Investor Proposal">
+        </div>
+        <div>
+          <label class="sag-label" for="prf-type">Document type *</label>
+          <select class="sag-select" id="prf-type" name="proposal_type" required></select>
+        </div>
+        <div>
+          <label class="sag-label" for="prf-author">Submitted by *</label>
+          <input class="sag-input" id="prf-author" name="submitted_by" required placeholder="Full name">
+        </div>
+        <div>
+          <label class="sag-label" for="prf-org">Organisation / institution</label>
+          <input class="sag-input" id="prf-org" name="organization" placeholder="e.g. University of Lagos">
+        </div>
+        <div>
+          <label class="sag-label" for="prf-email">Contact email *</label>
+          <input class="sag-input" id="prf-email" name="contact_email" type="email" required placeholder="you@institution.edu">
+        </div>
+        <div>
+          <label class="sag-label" for="prf-budget">Budget / funding sought</label>
+          <input class="sag-input" id="prf-budget" name="budget" type="number" min="0" step="1" placeholder="0">
+        </div>
+        <div>
+          <label class="sag-label" for="prf-currency">Currency</label>
+          <select class="sag-select" id="prf-currency" name="currency"></select>
+        </div>
+        <div>
+          <label class="sag-label" for="prf-deadline">Submission deadline</label>
+          <input class="sag-input" id="prf-deadline" name="deadline" type="date">
+        </div>
+        <div>
+          <label class="sag-label" for="prf-status">Status</label>
+          <select class="sag-select" id="prf-status" name="status"></select>
+        </div>
+        <div class="sm:col-span-2">
+          <label class="sag-label" for="prf-problem">Problem statement *</label>
+          <textarea class="sag-textarea" id="prf-problem" name="problem_statement" required
+            placeholder="What problem exists, who it affects, and what evidence supports it?"></textarea>
+        </div>
+        <div class="sm:col-span-2">
+          <label class="sag-label" for="prf-scope">Scope of work *</label>
+          <textarea class="sag-textarea" id="prf-scope" name="scope" required
+            placeholder="Deliverables, methods, phases and what is explicitly out of scope…"></textarea>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap justify-end gap-3 mt-6">
+        <button class="sag-btn sag-btn-ghost" type="button" data-close-modal="proposal-modal">Cancel</button>
+        <button class="sag-btn sag-btn-primary" type="submit" id="proposal-submit"><i class="fa-solid fa-paper-plane"></i> Save Proposal</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ==================== PROPOSAL DETAIL MODAL ==================== -->
+<div class="sag-modal-backdrop" id="proposal-detail-modal" role="dialog" aria-modal="true" aria-labelledby="pd-title">
+  <div class="sag-modal">
+    <div class="flex items-start justify-between gap-4 p-5" style="border-bottom:1px solid var(--sag-line)">
+      <div>
+        <h2 class="text-lg font-bold m-0" id="pd-title">Proposal</h2>
+        <p class="sag-muted text-sm m-0" id="pd-sub">—</p>
+      </div>
+      <button class="sag-btn sag-btn-ghost" type="button" data-close-modal="proposal-detail-modal" aria-label="Close dialog">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="p-5" id="pd-body"></div>
+  </div>
+</div>
+
+<footer id="sag-footer"></footer>
+
+<script src="js/app.js"></script>
+<script src="js/proposals.js"></script>
+</body>
+</html>

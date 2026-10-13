@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Service Catalogue — SAGTECH IT SOLUTION</title>
+<meta name="description" content="Full SAGTECH service catalogue: architecture design, database schema engineering, UML modelling, technical support, cloud deployment, cybersecurity and proposal writing.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="sag-header"></header>
+
+<main>
+
+  <section class="sag-grid-bg border-b" style="border-color:var(--sag-line)">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+      <p class="sag-eyebrow mb-3"><i class="fa-solid fa-layer-group"></i> Service Catalogue</p>
+      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4 max-w-3xl">
+        Every service line in the HUB, with deliverables and turnaround
+      </h1>
+      <p class="sag-muted max-w-2xl">
+        Filter by pillar or search by keyword. Pricing shown is an indicative starting point — final quotes are scoped
+        per engagement.
+      </p>
+    </div>
+  </section>
+
+  <!-- Controls -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 pt-10" aria-label="Catalogue filters">
+    <div class="sag-panel p-4 sm:p-5">
+      <div class="grid gap-4 md:grid-cols-[1.4fr_1fr_auto] md:items-end">
+        <div>
+          <label class="sag-label" for="service-search">Search services</label>
+          <input class="sag-input" id="service-search" type="search" placeholder="e.g. ERD, firewall, proposal, cloud…" autocomplete="off">
+        </div>
+        <div>
+          <label class="sag-label" for="pillar-filter">Filter by pillar</label>
+          <select class="sag-select" id="pillar-filter">
+            <option value="">All pillars</option>
+            <option value="Enterprise &amp; System Architecture">Enterprise &amp; System Architecture</option>
+            <option value="Technical Support &amp; Infrastructure">Technical Support &amp; Infrastructure</option>
+            <option value="Business &amp; Academic Proposals">Business &amp; Academic Proposals</option>
+          </select>
+        </div>
+        <div class="flex gap-2">
+          <button class="sag-btn sag-btn-ghost" id="btn-reset-filters" type="button"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+        </div>
+      </div>
+      <p class="sag-help mt-3 mb-0" id="catalogue-count">Loading catalogue…</p>
+    </div>
+  </section>
+
+  <!-- Service cards -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 py-8" aria-label="Services">
+    <div id="service-grid" class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <div class="sag-loading"><span class="sag-spinner"></span><span>Loading service catalogue…</span></div>
+    </div>
+  </section>
+
+  <!-- Comparison table -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 pb-6" aria-labelledby="matrix-heading">
+    <div class="sag-card p-5 sm:p-6">
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+        <h2 id="matrix-heading" class="text-xl font-bold m-0">Deliverable matrix</h2>
+        <span class="sag-badge sag-badge-cyan"><i class="fa-solid fa-table"></i> Live from services table</span>
+      </div>
+      <div class="sag-table-wrap">
+        <table class="sag-table">
+          <caption class="sag-sr-only">Service deliverables, turnaround and starting price by pillar</caption>
+          <thead>
+            <tr>
+              <th scope="col">Service</th>
+              <th scope="col">Pillar</th>
+              <th scope="col">Key deliverables</th>
+              <th scope="col">Turnaround</th>
+              <th scope="col">From</th>
+            </tr>
+          </thead>
+          <tbody id="service-matrix">
+            <tr><td colspan="5">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="sag-footer"></footer>
+
+<script src="js/app.js"></script>
+<script src="js/services.js"></script>
+</body>
+</html>

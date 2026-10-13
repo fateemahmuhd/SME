@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact &amp; Enquiries — SAGTECH IT SOLUTION</title>
+<meta name="description" content="Request a quote or submit an enquiry to SAGTECH IT SOLUTION for architecture, infrastructure or proposal work.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="sag-header"></header>
+
+<main>
+
+  <section class="sag-grid-bg border-b" style="border-color:var(--sag-line)">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+      <p class="sag-eyebrow mb-3"><i class="fa-solid fa-paper-plane"></i> Get in touch</p>
+      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4 max-w-3xl">Request a quote or ask a question</h1>
+      <p class="sag-muted max-w-3xl">
+        Tell us what you need — a system to design, an infrastructure problem to solve, or a proposal to write. Your
+        enquiry is logged in the hub and appears on the delivery dashboard immediately.
+      </p>
+    </div>
+  </section>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+
+    <!-- ==================== ENQUIRY FORM ==================== -->
+    <section class="sag-card p-5 sm:p-6" aria-labelledby="enquiry-heading">
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-1">
+        <h2 id="enquiry-heading" class="text-xl font-bold m-0">Enquiry form</h2>
+        <span class="sag-badge sag-badge-cyan"><i class="fa-solid fa-database"></i> INSERT INTO inquiries</span>
+      </div>
+      <p class="sag-muted text-sm mb-5">Fields marked * are required.</p>
+
+      <form id="enquiry-form" novalidate>
+        <div id="enquiry-form-errors" style="display:none" class="mb-4"></div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label class="sag-label" for="ef-name">Full name *</label>
+            <input class="sag-input" id="ef-name" name="name" required autocomplete="name">
+          </div>
+          <div>
+            <label class="sag-label" for="ef-email">Email address *</label>
+            <input class="sag-input" id="ef-email" name="email" type="email" required autocomplete="email" placeholder="you@company.com">
+          </div>
+          <div>
+            <label class="sag-label" for="ef-company">Company / institution</label>
+            <input class="sag-input" id="ef-company" name="company" autocomplete="organization">
+          </div>
+          <div>
+            <label class="sag-label" for="ef-phone">Phone</label>
+            <input class="sag-input" id="ef-phone" name="phone" autocomplete="tel" placeholder="+234 800 000 0000">
+          </div>
+          <div class="sm:col-span-2">
+            <label class="sag-label" for="ef-service">Service of interest *</label>
+            <select class="sag-select" id="ef-service" name="service_interest" required></select>
+          </div>
+          <div class="sm:col-span-2">
+            <label class="sag-label" for="ef-message">How can we help? *</label>
+            <textarea class="sag-textarea" id="ef-message" name="message" required
+              placeholder="Describe the system, the fault, or the document you need. Include any deadlines or constraints."></textarea>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap justify-end gap-3 mt-5">
+          <button class="sag-btn sag-btn-ghost" type="reset">Clear</button>
+          <button class="sag-btn sag-btn-primary" type="submit" id="enquiry-submit">
+            <i class="fa-solid fa-paper-plane"></i> Send Enquiry
+          </button>
+        </div>
+      </form>
+
+      <div id="enquiry-confirmation" class="mt-5" style="display:none"></div>
+    </section>
+
+    <!-- ==================== SIDE INFO ==================== -->
+    <aside class="grid gap-6 content-start">
+
+      <section class="sag-card p-5" aria-labelledby="channels-heading">
+        <h2 id="channels-heading" class="text-lg font-bold mb-4">Contact channels</h2>
+        <ul class="list-none p-0 m-0 grid gap-4 text-sm">
+          <li class="flex gap-3">
+            <span class="sag-icon-badge" style="width:38px;height:38px"><i class="fa-solid fa-envelope"></i></span>
+            <div><strong class="block">Email</strong>
+            <span class="sag-muted">hello@sagtech-itsolution.example</span></div>
+          </li>
+          <li class="flex gap-3">
+            <span class="sag-icon-badge" style="width:38px;height:38px;background:rgba(52,211,153,.14);color:var(--sag-emerald)"><i class="fa-solid fa-phone"></i></span>
+            <div><strong class="block">Phone / WhatsApp</strong>
+            <span class="sag-muted">+234 800 SAG TECH</span></div>
+          </li>
+          <li class="flex gap-3">
+            <span class="sag-icon-badge" style="width:38px;height:38px;background:rgba(167,139,250,.15);color:var(--sag-violet)"><i class="fa-solid fa-location-dot"></i></span>
+            <div><strong class="block">Office</strong>
+            <span class="sag-muted">IT Solution HUB, Innovation Quarter, Lagos, Nigeria</span></div>
+          </li>
+        </ul>
+        <p class="sag-help mt-4 mb-0">Demo contact details — replace with your real channels before publishing.</p>
+      </section>
+
+      <section class="sag-card p-5" aria-labelledby="response-heading">
+        <h2 id="response-heading" class="text-lg font-bold mb-3">Response targets</h2>
+        <div class="grid gap-3 text-sm">
+          <div class="flex justify-between gap-3"><span class="sag-muted">Critical incident</span><strong>1 hour</strong></div>
+          <div class="flex justify-between gap-3"><span class="sag-muted">High severity fault</span><strong>4 hours</strong></div>
+          <div class="flex justify-between gap-3"><span class="sag-muted">Standard enquiry</span><strong>1 business day</strong></div>
+          <div class="flex justify-between gap-3"><span class="sag-muted">Proposal scoping call</span><strong>3 business days</strong></div>
+        </div>
+      </section>
+
+      <section class="sag-card p-5" aria-labelledby="faster-heading">
+        <h2 id="faster-heading" class="text-lg font-bold mb-3">Need a faster route?</h2>
+        <p class="sag-muted text-sm mb-4">If you already know the work is a fault, raise a support ticket — it is triaged by severity rather than in enquiry order.</p>
+        <a class="sag-btn sag-btn-primary w-full justify-center" href="support.html"><i class="fa-solid fa-ticket"></i> Raise a Support Ticket</a>
+        <a class="sag-btn sag-btn-ghost w-full justify-center mt-3" href="proposals.html"><i class="fa-solid fa-file-signature"></i> Submit a Proposal</a>
+      </section>
+
+      <section class="sag-card p-5" aria-labelledby="recent-heading">
+        <h2 id="recent-heading" class="text-lg font-bold mb-3">Recently received</h2>
+        <div id="recent-enquiries"><div class="sag-loading"><span class="sag-spinner"></span><span>Loading…</span></div></div>
+      </section>
+
+    </aside>
+  </div>
+
+</main>
+
+<footer id="sag-footer"></footer>
+
+<script src="js/app.js"></script>
+<script src="js/contact.js"></script>
+</body>
+</html>

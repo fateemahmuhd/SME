@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAGTECH IT SOLUTION — IT Solution HUB | Architecture, Infrastructure &amp; Proposals</title>
+<meta name="description" content="SAGTECH IT SOLUTION is an IT Solution HUB for enterprise &amp; system architecture, technical support &amp; infrastructure, and business &amp; academic proposals.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="sag-header"></header>
+
+<main>
+
+  <!-- ============================= HERO ============================= -->
+  <section class="sag-grid-bg border-b" style="border-color:var(--sag-line)">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24 grid gap-12 lg:grid-cols-[1.05fr_0.95fr] items-center">
+      <div>
+        <p class="sag-eyebrow mb-4"><i class="fa-solid fa-bolt"></i> IT Solution HUB</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-[1.08] tracking-tight mb-5">
+          Design, document and <span class="sag-gradient-text">deploy IT solutions</span> that actually ship.
+        </h1>
+        <p class="text-lg sag-muted max-w-xl mb-8">
+          SAGTECH IT SOLUTION is a single hub for three disciplines that usually live in three different vendors:
+          enterprise &amp; system architecture, technical support &amp; infrastructure, and business &amp; Final Year Student Project&amp;Web Application&amp;Android
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a class="sag-btn sag-btn-primary" href="contact.html"><i class="fa-solid fa-paper-plane"></i> Request a Quote</a>
+          <a class="sag-btn sag-btn-ghost" href="services.html"><i class="fa-solid fa-layer-group"></i> Browse Services</a>
+        </div>
+        <dl class="grid grid-cols-3 gap-4 mt-10 max-w-lg">
+          <div><dt class="sag-metric-label">Service Lines</dt><dd class="text-2xl font-bold m-0" id="hero-services">—</dd></div>
+          <div><dt class="sag-metric-label">Engagements</dt><dd class="text-2xl font-bold m-0" id="hero-projects">—</dd></div>
+          <div><dt class="sag-metric-label">Tickets Solved</dt><dd class="text-2xl font-bold m-0" id="hero-tickets">—</dd></div>
+        </dl>
+      </div>
+
+      <!-- Live hub snapshot panel -->
+      <div class="sag-card p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-base font-semibold m-0"><i class="fa-solid fa-gauge-high" style="color:var(--sag-cyan)"></i> Live HUB Snapshot</h2>
+          <span class="sag-badge sag-badge-green"><i class="fa-solid fa-circle" style="font-size:.5rem"></i> Live data</span>
+        </div>
+        <div id="snapshot-metrics" class="grid grid-cols-2 gap-4">
+          <div class="sag-loading"><span class="sag-spinner"></span><span>Loading…</span></div>
+        </div>
+        <hr class="sag-divider my-5">
+        <h3 class="text-xs font-semibold uppercase tracking-wider sag-muted mb-3">Architecture Artifacts in Flight</h3>
+        <div id="snapshot-artifacts"><div class="sag-loading"><span class="sag-spinner"></span><span>Loading…</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================== 3 PILLARS ========================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 py-16" aria-labelledby="pillars-heading">
+    <div class="max-w-3xl mb-10">
+      <p class="sag-eyebrow mb-2">What the HUB covers</p>
+      <h2 id="pillars-heading" class="text-3xl md:text-4xl font-bold tracking-tight mb-3">Three solution pillars, one accountable team</h2>
+      <p class="sag-muted">Every pillar has a working module inside the hub: submit work, track progress, and see the delivery dashboard update live.</p>
+    </div>
+
+    <div class="grid gap-6 lg:grid-cols-3">
+      <article class="sag-card sag-card-hover sag-pillar-card p-6" data-pillar="architecture">
+        <span class="sag-icon-badge mb-4"><i class="fa-solid fa-sitemap"></i></span>
+        <h3 class="text-xl font-bold mb-2">Enterprise &amp; System Architecture</h3>
+        <p class="sag-muted text-sm mb-4">
+          Designing and documenting system components — class diagrams, database schemas, ERDs, flowcharts and full
+          system architecture for custom platforms.
+        </p>
+        <ul class="text-sm space-y-2 mb-5 list-none p-0">
+          <li><i class="fa-solid fa-check" style="color:var(--sag-cyan)"></i> ERD &amp; normalised schema engineering</li>
+          <li><i class="fa-solid fa-check" style="color:var(--sag-cyan)"></i> Class, use-case &amp; sequence diagrams</li>
+          <li><i class="fa-solid fa-check" style="color:var(--sag-cyan)"></i> Layered architecture &amp; integration maps</li>
+        </ul>
+        <a class="sag-btn sag-btn-ghost w-full justify-center" href="architecture.html">
+          Open Architecture Module <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <article class="sag-card sag-card-hover sag-pillar-card p-6" data-pillar="support">
+        <span class="sag-icon-badge mb-4" style="background:rgba(52,211,153,.14);color:var(--sag-emerald)"><i class="fa-solid fa-shield-halved"></i></span>
+        <h3 class="text-xl font-bold mb-2">Technical Support &amp; Infrastructure</h3>
+        <p class="sag-muted text-sm mb-4">
+          Troubleshooting software and hardware setups, network configuration, cloud deployment and cybersecurity
+          frameworks — with documented root cause and remediation.
+        </p>
+        <ul class="text-sm space-y-2 mb-5 list-none p-0">
+          <li><i class="fa-solid fa-check" style="color:var(--sag-emerald)"></i> Application &amp; hardware fault diagnosis</li>
+          <li><i class="fa-solid fa-check" style="color:var(--sag-emerald)"></i> Network, VPN &amp; cloud deployment</li>
+          <li><i class="fa-solid fa-check" style="color:var(--sag-emerald)"></i> Security hardening &amp; IR playbooks</li>
+        </ul>
+        <a class="sag-btn sag-btn-ghost w-full justify-center" href="support.html">
+          Open Support Hub <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <article class="sag-card sag-card-hover sag-pillar-card p-6" data-pillar="proposals">
+        <span class="sag-icon-badge mb-4" style="background:rgba(167,139,250,.15);color:var(--sag-violet)"><i class="fa-solid fa-file-signature"></i></span>
+        <h3 class="text-xl font-bold mb-2">Business &amp; Academic Proposals</h3>
+        <p class="sag-muted text-sm mb-4">
+          Drafting project proposals, problem statements and technical specifications for IT solution platforms —
+          investor-ready or defence-ready.
+        </p>
+        <ul class="text-sm space-y-2 mb-5 list-none p-0">
+          <li><i class="fa-solid fa-check" style="color:var(--sag-violet)"></i> Business &amp; investor proposals</li>
+          <li><i class="fa-solid fa-check" style="color:var(--sag-violet)"></i> Academic proposals (UG, MSc, PhD)</li>
+          <li><i class="fa-solid fa-check" style="color:var(--sag-violet)"></i> IEEE-830 style SRS documents</li>
+        </ul>
+        <a class="sag-btn sag-btn-ghost w-full justify-center" href="proposals.html">
+          Open Proposal Desk <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ========================== ENGAGEMENT FLOW ===================== -->
+  <section class="border-y" style="border-color:var(--sag-line);background:rgba(10,20,40,.45)" aria-labelledby="process-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+      <div>
+        <p class="sag-eyebrow mb-2">How an engagement runs</p>
+        <h2 id="process-heading" class="text-3xl font-bold tracking-tight mb-4">From raw requirement to signed-off artifact</h2>
+        <p class="sag-muted mb-6">
+          The hub enforces a single delivery path so nothing gets lost between discovery, design and handover. Every
+          stage produces a record you can see in the dashboard.
+        </p>
+        <a class="sag-btn sag-btn-primary" href="dashboard.html"><i class="fa-solid fa-chart-pie"></i> View Delivery Dashboard</a>
+      </div>
+      <ol class="list-none p-0 m-0">
+        <li class="sag-step"><span class="sag-step-marker">1</span>
+          <h3 class="font-semibold mb-1">Discovery &amp; scoping</h3>
+          <p class="sag-muted text-sm m-0">Stakeholder interviews, as-is process capture, constraints and success criteria recorded against the engagement.</p>
+        </li>
+        <li class="sag-step"><span class="sag-step-marker">2</span>
+          <h3 class="font-semibold mb-1">Architecture &amp; specification</h3>
+          <p class="sag-muted text-sm m-0">ERDs, class diagrams, flowcharts, schemas and specifications produced and versioned as reviewable artifacts.</p>
+        </li>
+        <li class="sag-step"><span class="sag-step-marker">3</span>
+          <h3 class="font-semibold mb-1">Infrastructure &amp; deployment</h3>
+          <p class="sag-muted text-sm m-0">Network, cloud and security work executed with runbooks; support tickets raised and resolved in the hub.</p>
+        </li>
+        <li class="sag-step"><span class="sag-step-marker">4</span>
+          <h3 class="font-semibold mb-1">Handover &amp; ongoing support</h3>
+          <p class="sag-muted text-sm m-0">Documentation pack, acceptance criteria sign-off, and optional managed monitoring retainer.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ========================= FEATURED WORK ======================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 py-16" aria-labelledby="featured-heading">
+    <div class="flex flex-wrap items-end justify-between gap-4 mb-8">
+      <div>
+        <p class="sag-eyebrow mb-2">Selected engagements</p>
+        <h2 id="featured-heading" class="text-3xl font-bold tracking-tight m-0">Featured architecture work</h2>
+      </div>
+      <a class="sag-btn sag-btn-ghost" href="architecture.html">All engagements <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div id="featured-projects" class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <div class="sag-loading"><span class="sag-spinner"></span><span>Loading engagements…</span></div>
+    </div>
+  </section>
+
+  <!-- ========================== TESTIMONIALS ======================== -->
+  <section class="border-t" style="border-color:var(--sag-line)" aria-labelledby="testimonials-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+      <p class="sag-eyebrow mb-2">Client feedback</p>
+      <h2 id="testimonials-heading" class="text-3xl font-bold tracking-tight mb-8">What clients and researchers say</h2>
+      <div id="testimonial-list" class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div class="sag-loading"><span class="sag-spinner"></span><span>Loading testimonials…</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== CTA ============================= -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 pb-4">
+    <div class="sag-card p-8 md:p-12 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold mb-3">Have a system to design, a fault to fix, or a proposal to win?</h2>
+      <p class="sag-muted max-w-2xl mx-auto mb-7">
+        Submit it to the hub. Architecture engagements are tracked as projects, faults become support tickets, and
+        proposals get a review workflow with revision rounds.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a class="sag-btn sag-btn-primary" href="contact.html"><i class="fa-solid fa-comments"></i> Start an Enquiry</a>
+        <a class="sag-btn sag-btn-ghost" href="support.html"><i class="fa-solid fa-headset"></i> Raise a Support Ticket</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="sag-footer"></footer>
+
+<script src="js/app.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

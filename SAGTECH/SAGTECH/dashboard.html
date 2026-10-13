@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delivery Dashboard — SAGTECH IT SOLUTION</title>
+<meta name="description" content="Live delivery dashboard across SAGTECH architecture engagements, support tickets, proposals and enquiries.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="sag-header"></header>
+
+<main>
+
+  <section class="sag-grid-bg border-b" style="border-color:var(--sag-line)">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+      <p class="sag-eyebrow mb-3"><i class="fa-solid fa-chart-pie"></i> Operations</p>
+      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4 max-w-3xl">Delivery Dashboard</h1>
+      <p class="sag-muted max-w-3xl">
+        Aggregated view across all three pillars. Every figure is computed live from the hub's tables — architecture
+        engagements, support tickets, proposals and inbound enquiries.
+      </p>
+      <button class="sag-btn sag-btn-ghost mt-5" type="button" id="btn-refresh"><i class="fa-solid fa-rotate"></i> Refresh data</button>
+    </div>
+  </section>
+
+  <!-- KPI strip -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 pt-10" aria-label="Key performance indicators">
+    <div id="dash-kpis" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="sag-loading"><span class="sag-spinner"></span><span>Loading metrics…</span></div>
+    </div>
+  </section>
+
+  <!-- Charts -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 py-8 grid gap-6 lg:grid-cols-2" aria-label="Charts">
+    <div class="sag-card p-5">
+      <h2 class="text-base font-semibold mb-4 m-0"><i class="fa-solid fa-chart-bar" style="color:var(--sag-cyan)"></i> Engagements by status</h2>
+      <div class="sag-chart-box"><canvas id="chart-project-status" aria-label="Architecture engagements grouped by status" role="img"></canvas></div>
+    </div>
+    <div class="sag-card p-5">
+      <h2 class="text-base font-semibold mb-4 m-0"><i class="fa-solid fa-chart-pie" style="color:var(--sag-emerald)"></i> Support tickets by category</h2>
+      <div class="sag-chart-box"><canvas id="chart-ticket-category" aria-label="Support tickets grouped by category" role="img"></canvas></div>
+    </div>
+    <div class="sag-card p-5">
+      <h2 class="text-base font-semibold mb-4 m-0"><i class="fa-solid fa-chart-column" style="color:var(--sag-violet)"></i> Proposal pipeline by status</h2>
+      <div class="sag-chart-box"><canvas id="chart-proposal-status" aria-label="Proposals grouped by workflow status" role="img"></canvas></div>
+    </div>
+    <div class="sag-card p-5">
+      <h2 class="text-base font-semibold mb-4 m-0"><i class="fa-solid fa-chart-line" style="color:var(--sag-amber)"></i> Ticket severity mix</h2>
+      <div class="sag-chart-box"><canvas id="chart-ticket-severity" aria-label="Support tickets grouped by severity" role="img"></canvas></div>
+    </div>
+  </section>
+
+  <!-- Priority attention table -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 pb-8" aria-labelledby="attention-heading">
+    <div class="sag-card p-5 sm:p-6">
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+        <div>
+          <h2 id="attention-heading" class="text-xl font-bold m-0">Needs attention</h2>
+          <p class="sag-muted text-sm m-0">Critical and High severity tickets that are still open or in progress.</p>
+        </div>
+        <a class="sag-btn sag-btn-ghost" href="support.html">Open Support Hub <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="sag-table-wrap">
+        <table class="sag-table">
+          <caption class="sag-sr-only">High priority open support tickets</caption>
+          <thead>
+            <tr>
+              <th scope="col">Ref</th><th scope="col">Requester</th><th scope="col">Category</th>
+              <th scope="col">Severity</th><th scope="col">Status</th><th scope="col">Assigned</th>
+            </tr>
+          </thead>
+          <tbody id="attention-tbody">
+            <tr><td colspan="6">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent enquiries -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 pb-10" aria-labelledby="enquiries-heading">
+    <div class="sag-card p-5 sm:p-6">
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+        <div>
+          <h2 id="enquiries-heading" class="text-xl font-bold m-0">Recent enquiries</h2>
+          <p class="sag-muted text-sm m-0">Inbound requests captured by the contact module.</p>
+        </div>
+        <a class="sag-btn sag-btn-ghost" href="contact.html">Contact module <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="sag-table-wrap">
+        <table class="sag-table">
+          <caption class="sag-sr-only">Most recent inbound enquiries</caption>
+          <thead>
+            <tr>
+              <th scope="col">Name</th><th scope="col">Company</th><th scope="col">Interest</th>
+              <th scope="col">Status</th><th scope="col">Received</th>
+            </tr>
+          </thead>
+          <tbody id="enquiry-tbody">
+            <tr><td colspan="5">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="sag-footer"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/app.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

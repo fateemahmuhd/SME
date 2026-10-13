@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Technical Support &amp; Infrastructure Hub — SAGTECH IT SOLUTION</title>
+<meta name="description" content="Raise and track support tickets for software troubleshooting, hardware setup, network configuration, cloud deployment and cybersecurity.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="sag-header"></header>
+
+<main>
+
+  <section class="sag-grid-bg border-b" style="border-color:var(--sag-line)">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+      <p class="sag-eyebrow mb-3" style="color:var(--sag-emerald)"><i class="fa-solid fa-headset"></i> Pillar 2</p>
+      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4 max-w-3xl">
+        Technical Support &amp; Infrastructure Hub
+      </h1>
+      <p class="sag-muted max-w-3xl">
+        Raise a support ticket for software or hardware faults, network configuration, cloud deployment or
+        cybersecurity work — then track it through Open → In Progress → Resolved with the ticket reference.
+      </p>
+    </div>
+  </section>
+
+  <!-- Service quick-reference tiles -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 pt-10" aria-label="Support capability areas">
+    <div id="support-tiles" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="sag-loading"><span class="sag-spinner"></span><span>Loading capability areas…</span></div>
+    </div>
+  </section>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+
+    <!-- ==================== TICKET INTAKE FORM ==================== -->
+    <section class="sag-card p-5 sm:p-6" aria-labelledby="intake-heading">
+      <div class="flex items-center justify-between gap-3 mb-1">
+        <h2 id="intake-heading" class="text-xl font-bold m-0">Raise a support ticket</h2>
+        <span class="sag-badge sag-badge-green"><i class="fa-solid fa-database"></i> INSERT INTO support_tickets</span>
+      </div>
+      <p class="sag-muted text-sm mb-5">Fields marked * are required. You will receive a ticket reference on submission.</p>
+
+      <form id="ticket-form" novalidate>
+        <div id="ticket-form-errors" style="display:none" class="mb-4"></div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label class="sag-label" for="tf-name">Your name *</label>
+            <input class="sag-input" id="tf-name" name="requester_name" required autocomplete="name">
+          </div>
+          <div>
+            <label class="sag-label" for="tf-email">Contact email *</label>
+            <input class="sag-input" id="tf-email" name="contact_email" type="email" required autocomplete="email" placeholder="you@company.com">
+          </div>
+          <div>
+            <label class="sag-label" for="tf-category">Category *</label>
+            <select class="sag-select" id="tf-category" name="category" required></select>
+          </div>
+          <div>
+            <label class="sag-label" for="tf-severity">Severity *</label>
+            <select class="sag-select" id="tf-severity" name="severity" required></select>
+          </div>
+          <div class="sm:col-span-2">
+            <label class="sag-label" for="tf-environment">Environment</label>
+            <select class="sag-select" id="tf-environment" name="environment"></select>
+          </div>
+          <div class="sm:col-span-2">
+            <label class="sag-label" for="tf-description">Describe the issue *</label>
+            <textarea class="sag-textarea" id="tf-description" name="description" required
+              placeholder="What is failing, since when, what you have already tried, and any error messages…"></textarea>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap justify-end gap-3 mt-5">
+          <button class="sag-btn sag-btn-ghost" type="reset" id="ticket-reset">Clear</button>
+          <button class="sag-btn sag-btn-primary" type="submit" id="ticket-submit">
+            <i class="fa-solid fa-ticket"></i> Submit Ticket
+          </button>
+        </div>
+      </form>
+
+      <div id="ticket-confirmation" class="mt-5" style="display:none"></div>
+    </section>
+
+    <!-- ==================== TICKET LOOKUP ==================== -->
+    <section class="sag-card p-5 sm:p-6" id="ticket-lookup" aria-labelledby="lookup-heading">
+      <h2 id="lookup-heading" class="text-xl font-bold mb-1">Track a ticket</h2>
+      <p class="sag-muted text-sm mb-5">Enter the ticket reference (e.g. SAG-3001) to see the current status and resolution notes.</p>
+
+      <div class="flex flex-wrap gap-3 items-end">
+        <div class="flex-1 min-w-[180px]">
+          <label class="sag-label" for="lookup-ref">Ticket reference</label>
+          <input class="sag-input" id="lookup-ref" placeholder="SAG-3001" autocomplete="off">
+        </div>
+        <button class="sag-btn sag-btn-primary" type="button" id="btn-lookup"><i class="fa-solid fa-magnifying-glass"></i> Look up</button>
+      </div>
+
+      <div id="lookup-result" class="mt-5"></div>
+    </section>
+  </div>
+
+  <!-- ==================== ACTIVE TICKET BOARD ==================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 pb-6" aria-labelledby="board-heading">
+    <div class="sag-card p-5 sm:p-6">
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+        <div>
+          <h2 id="board-heading" class="text-xl font-bold m-0">Support queue</h2>
+          <p class="sag-muted text-sm m-0">Every ticket currently registered in the hub, newest first.</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <select class="sag-select" id="board-status" style="width:auto" aria-label="Filter queue by status">
+            <option value="">All statuses</option>
+            <option>Open</option><option>In Progress</option><option>Awaiting Client</option>
+            <option>Resolved</option><option>Closed</option>
+          </select>
+          <span class="sag-badge sag-badge-cyan" id="board-count">—</span>
+        </div>
+      </div>
+
+      <div class="sag-table-wrap">
+        <table class="sag-table">
+          <caption class="sag-sr-only">Support tickets with severity, status and resolution progress</caption>
+          <thead>
+            <tr>
+              <th scope="col">Ref</th>
+              <th scope="col">Requester</th>
+              <th scope="col">Category</th>
+              <th scope="col">Severity</th>
+              <th scope="col">Environment</th>
+              <th scope="col">Status</th>
+              <th scope="col">Assigned</th>
+              <th scope="col">Raised</th>
+              <th scope="col" class="sag-no-print">Update</th>
+            </tr>
+          </thead>
+          <tbody id="ticket-tbody">
+            <tr><td colspan="9">Loading support queue…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== RESOLUTION PLAYBOOK ==================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 pb-8" aria-labelledby="playbook-heading">
+    <div class="sag-card p-5 sm:p-6">
+      <h2 id="playbook-heading" class="text-xl font-bold mb-1">Standard incident flow</h2>
+      <p class="sag-muted text-sm mb-6">How SAGTECH triages and closes infrastructure work.</p>
+      <div class="grid gap-6 md:grid-cols-2">
+        <ol class="list-none p-0 m-0">
+          <li class="sag-step"><span class="sag-step-marker">1</span>
+            <h3 class="font-semibold mb-1">Triage &amp; severity assignment</h3>
+            <p class="sag-muted text-sm m-0">Critical and High tickets are acknowledged first; severity may be re-graded after diagnosis.</p>
+          </li>
+          <li class="sag-step"><span class="sag-step-marker">2</span>
+            <h3 class="font-semibold mb-1">Diagnosis &amp; root cause</h3>
+            <p class="sag-muted text-sm m-0">Logs, query plans, packet captures and configuration diffs are gathered and recorded.</p>
+          </li>
+        </ol>
+        <ol class="list-none p-0 m-0">
+          <li class="sag-step"><span class="sag-step-marker">3</span>
+            <h3 class="font-semibold mb-1">Remediation &amp; verification</h3>
+            <p class="sag-muted text-sm m-0">Fix applied in a controlled window, then verified against the original symptom.</p>
+          </li>
+          <li class="sag-step"><span class="sag-step-marker">4</span>
+            <h3 class="font-semibold mb-1">Resolution notes &amp; closure</h3>
+            <p class="sag-muted text-sm m-0">Root cause and preventive action written to the ticket before it is marked Resolved.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==================== UPDATE TICKET MODAL ==================== -->
+<div class="sag-modal-backdrop" id="ticket-modal" role="dialog" aria-modal="true" aria-labelledby="ticket-modal-title">
+  <div class="sag-modal">
+    <div class="flex items-start justify-between gap-4 p-5" style="border-bottom:1px solid var(--sag-line)">
+      <div>
+        <h2 class="text-lg font-bold m-0" id="ticket-modal-title">Update Ticket</h2>
+        <p class="sag-muted text-sm m-0" id="ticket-modal-sub">—</p>
+      </div>
+      <button class="sag-btn sag-btn-ghost" type="button" data-close-modal="ticket-modal" aria-label="Close dialog">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <form id="ticket-update-form" class="p-5" novalidate>
+      <input type="hidden" name="id">
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label class="sag-label" for="uf-status">Status</label>
+          <select class="sag-select" id="uf-status" name="status"></select>
+        </div>
+        <div>
+          <label class="sag-label" for="uf-severity">Severity</label>
+          <select class="sag-select" id="uf-severity" name="severity"></select>
+        </div>
+        <div class="sm:col-span-2">
+          <label class="sag-label" for="uf-assignee">Assigned team</label>
+          <input class="sag-input" id="uf-assignee" name="assigned_to" placeholder="e.g. Network Team">
+        </div>
+        <div class="sm:col-span-2">
+          <label class="sag-label" for="uf-notes">Resolution / progress notes</label>
+          <textarea class="sag-textarea" id="uf-notes" name="resolution_notes" placeholder="Root cause, action taken, next step…"></textarea>
+        </div>
+      </div>
+      <div class="flex flex-wrap justify-end gap-3 mt-6">
+        <button class="sag-btn sag-btn-ghost" type="button" data-close-modal="ticket-modal">Cancel</button>
+        <button class="sag-btn sag-btn-primary" type="submit" id="ticket-update-submit"><i class="fa-solid fa-floppy-disk"></i> Save Update</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<footer id="sag-footer"></footer>
+
+<script src="js/app.js"></script>
+<script src="js/support.js"></script>
+</body>
+</html>
